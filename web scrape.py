@@ -32,6 +32,19 @@ soup = bs(driver.page_source, 'html.parser')
 # selects all table data
 table = soup.findAll('div', {"class": "cbResultSetPanelDataContainer"})
 
+test_list = []
+
 # prints text between the span elements
 for span in soup.select('span'):
-    print(span.text)
+    test_list.append(span.text)
+    #print(span.text)
+
+# 3-43, 47-87
+# last object is 1055
+test_list[87]
+
+# converts textarea to a string
+text = str(soup.text)
+
+# splits on '|type' and only keeps the last indexed item by using -1
+text = text.split('<span class="cbResultSetListViewDataLabel cbResultSetNestedAlign">', 1)[-1]
